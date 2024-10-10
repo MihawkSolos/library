@@ -6,6 +6,7 @@
     --form-background: #fff;
     --card-background: rgb(71, 12, 71);
     --primaryFontColor: #fff;
+    --cardBtn-background: #353434;
 }
 
 /* setting the layout of the website */
@@ -125,3 +126,16 @@ body {
     padding: 1rem;
     border: 1px black solid;
 }
+
+/* both button is created in js */
+.readBtn, .cardBtn {
+    display: block;
+    margin: 32px 0 10px 5px;
+    height: 30px;
+    width: 100px;
+    font-size: 1rem;
+    background-color: var(--cardBtn-background);
+    color: var(--primaryFontColor);
+
+}
+

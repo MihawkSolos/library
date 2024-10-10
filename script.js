@@ -13,9 +13,9 @@ function addBookToLibrary (title, author, pages, read) {
     myLibrary.push(book);
 }
 
-addBookToLibrary('One piece', 'Oda', 2000, 'read');
-addBookToLibrary('Naruto', 'Kishimoto', 1000, 'read');
-addBookToLibrary('To Kill A Mockingbird', 'Harper Lee', 400, 'not read');
+addBookToLibrary('One piece', 'Oda', 2000, 'Read');
+addBookToLibrary('Naruto', 'Kishimoto', 1000, 'Read');
+addBookToLibrary('To Kill A Mockingbird', 'Harper Lee', 400, 'Not Read');
 
 
 
@@ -25,12 +25,49 @@ function printLibrary (myLibrary) {
         console.log(myLibrary[i]);
         const card = document.createElement('div');
         card.classList.add('card');
+        // content i want in the card div
         card.innerHTML = `
             <h3>${myLibrary[i].title}</h3>
             <p>Author: ${myLibrary[i].author}</p>
             <p>Pages: ${myLibrary[i].pages}</p>
             <p>Read: ${myLibrary[i].read}</p>
-            `
+            `;
+
+        //adding btns to update the read status
+        const readBtn = document.createElement('button');
+        readBtn.classList.add('readBtn');
+        readBtn.textContent = myLibrary[i].read;
+
+        //readBtn event listener to update the read status
+        readBtn.addEventListener('click', () => {
+            if(myLibrary[i].read === 'Read'){
+                myLibrary[i].read = 'Not Read';
+                readBtn.textContent = 'Not Read';
+            } 
+            else if (myLibrary[i].read === 'Not Read'){
+                myLibrary[i].read = 'Read';
+                readBtn.textContent = 'Read';
+            }
+        })
+        
+
+
+        // creating btn with class .cardBtn used to remove 'cards'
+        const cardBtn = document.createElement('button');
+        cardBtn.textContent = "Remove";
+        cardBtn.classList.add('cardBtn');
+
+        //cardBtn event listener 
+        cardBtn.addEventListener('click', () => {
+            card.remove(); // removes the card from the library (pretty much only removes display)
+            myLibrary.splice(i,1); // removes the book from the actual library array
+            printLibrary(myLibrary); // prints the updates library 
+        });
+
+        
+
+        card.appendChild(readBtn);
+        card.appendChild(cardBtn);
         libraryContainer.appendChild(card); 
     }
 }
@@ -45,6 +82,8 @@ const cancelBtn = document.querySelector('.cancel');
 const submitBtn = document.querySelector('.submit');
 const authorInput = document.getElementById('author');
 const titleInput = document.getElementById('title');
+const pagesInput = document.getElementById('pages');
+const readInput = document.getElementById('read');
 
 
 // function to make form container visible
@@ -70,7 +109,7 @@ cancelBtn.addEventListener('click', () => {
 // if they click submit then add the author and book title
 submitBtn.addEventListener('click', () => {
     event.preventDefault(); // prevent form submission from refreshing page
-    addBookToLibrary(authorInput.value, titleInput.value);
+    addBookToLibrary(authorInput.value, titleInput.value, pagesInput.value, readInput.value);
     makeHidden();
     printLibrary(myLibrary);
 });
