@@ -21,14 +21,50 @@ function printLibrary (myLibarary) {
     }
 }
 
-printLibrary(myLibrary);
+
+
+
 
 
 
 const bookBtn = document.querySelector('.book');
 const libraryContainer = document.querySelector('.library');
+const cancelBtn = document.querySelector('.cancel');
+const submitBtn = document.querySelector('.submit');
+const authorInput = document.getElementById('author');
+const titleInput = document.getElementById('title');
+
+
+// function to make form container visible
+function makeVisible() {
+    document.getElementById('form-container').style.visibility = 'visible';
+}
+
+// function to make form container 
+function makeHidden() {
+    document.getElementById('form-container').style.visibility = 'hidden';
+}
 
 // have form show up when user clicks on the new book btn
 bookBtn.addEventListener('click', () => {
-    document.getElementById('form-container').style.visibility = 'visible';
-})
+   makeVisible();
+});
+
+// remove the form container of they click cancel btn
+cancelBtn.addEventListener('click', () => {
+    makeHidden();
+});
+
+// if they click submit then add the author and book title
+submitBtn.addEventListener('click', () => {
+    event.preventDefault(); // prevent form submission from refreshing page
+    addBookToLibrary(authorInput.value, titleInput.value);
+    makeHidden();
+    printLibrary(myLibrary);
+});
+
+
+
+
+
+

@@ -1,5 +1,14 @@
+:root {
+    --myFont: 'Raleway', sans-serif;
+    --newBook-background: linear-gradient(to top, #551b55, #19196b);
+    --btn-background: rgb(49, 116, 240);
+    --library-background: #dfdcdc;
+    --form-background: #fff;
+}
+
 /* setting the layout of the website */
 body {
+    font-family: var(--myFont);
     margin: 0;
     padding: 0;
     height: 100vh;
@@ -18,24 +27,36 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
+    background: linear-gradient(to right, #808080, #000000);
+
 
     border: 1px black solid;
 }
 
 /* title styling */
 .title {
-
+    font-size: 4rem;
+    font-style: italic;
 }
 
 /* new book btn styling */
 .book {
-
+    padding: 1rem;
+    height: 50px;
+    width: 200px;
+    color: #e0c3c3;
+    font-size: 1rem;
+    font-weight: 700;
+    background: var(--newBook-background);
 }
 
 /* declaring grid area */
 .library {
     grid-area: library;
-
+    padding: 2rem;
+    grid-auto-columns: 300px;
+    grid-auto-rows: 300px;
+    background: var(--library-background);
 
     border: 1px black solid;
 }
@@ -43,15 +64,40 @@ body {
 /* having from container be invisible until someone presses the
  new book btn */
 .form-container {
-    height: 200px;
-    width: 200px;
+    height: 20vh;
+    width: 20vw;
     padding: 1rem;
     margin: 0;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    visibility: hidden;
-
+    background: var(--form-background);
     border: 1px black solid;
+    visibility: visible;  /* change later to hidden */
+
+}
+
+.form-container > form {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.8rem;
+}
+
+.author-container, .title-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: normal;
+    justify-content: space-evenly;
+    padding: 8px;
+    margin-top: 0.5rem;
 }
