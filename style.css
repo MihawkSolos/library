@@ -4,6 +4,8 @@
     --btn-background: rgb(49, 116, 240);
     --library-background: #dfdcdc;
     --form-background: #fff;
+    --card-background: rgb(71, 12, 71);
+    --primaryFontColor: #fff;
 }
 
 /* setting the layout of the website */
@@ -19,6 +21,9 @@ body {
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: 0.6fr 4fr;
 }
+
+
+/* HEADER STYLING STARTS HERE */
 
 /* Edit layout of the header & declaring the grid area*/
 .header {
@@ -50,16 +55,8 @@ body {
     background: var(--newBook-background);
 }
 
-/* declaring grid area */
-.library {
-    grid-area: library;
-    padding: 2rem;
-    grid-auto-columns: 300px;
-    grid-auto-rows: 300px;
-    background: var(--library-background);
 
-    border: 1px black solid;
-}
+/* FORM STYLING STARTS HERE */
 
 /* having from container be invisible until someone presses the
  new book btn */
@@ -74,7 +71,7 @@ body {
     transform: translate(-50%, -50%);
     background: var(--form-background);
     border: 1px black solid;
-    visibility: visible;  /* change later to hidden */
+    visibility: hidden;  /* change later to hidden */
 
 }
 
@@ -100,4 +97,31 @@ body {
     justify-content: space-evenly;
     padding: 8px;
     margin-top: 0.5rem;
+}
+
+
+/* LIBRARY STYLING STARTS HERE */
+
+/* declaring grid area */
+.library {
+    grid-area: library;
+    padding: 2rem;
+    display: grid;
+    grid-auto-columns: 300px;
+    grid-auto-rows: 300px;
+    /* repeat as many columns as can fit in the space (.library), with a size of 300px min or 1fr max */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    background: var(--library-background);
+    gap: 6rem;
+    
+}
+
+/* card are created and set in js */
+.card {
+    background: var(--card-background);
+    color: var(--primaryFontColor);
+    height: 300px;
+    width: 300px;
+    padding: 1rem;
+    border: 1px black solid;
 }

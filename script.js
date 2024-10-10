@@ -15,13 +15,20 @@ addBookToLibrary('One piece', 'Oda');
 addBookToLibrary('Naruto', 'Kishimoto');
 addBookToLibrary('To Kill A Mockingbird', 'Harper Lee');
 
-function printLibrary (myLibarary) {
-    for(let i = 0; i < myLibarary.length; i++){
-        console.log(myLibarary[i]);
+
+
+function printLibrary (myLibrary) {
+    for(let i = 0; i < myLibrary.length; i++){
+        console.log(myLibrary[i]);
+        const card = document.createElement('div');
+        card.classList.add('card');
+        card.innerHTML = `
+            <h3>${myLibrary[i].title}</h3>
+            <p>Author: ${myLibrary[i].author}</p>
+            `
+        libraryContainer.appendChild(card); 
     }
 }
-
-
 
 
 
@@ -64,7 +71,7 @@ submitBtn.addEventListener('click', () => {
 });
 
 
-
+printLibrary(myLibrary);
 
 
 
