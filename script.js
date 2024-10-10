@@ -1,23 +1,26 @@
 const myLibrary = [];
 
 // capital first letter of fucntion name represent constructor
-function Book (title, author) {
+function Book (title, author, pages, read) {
     this.title = title;
     this.author = author;
+    this.pages = pages;
+    this.read = read;
 }
 
-function addBookToLibrary (title, author) {
-    const book = new Book (title, author);
+function addBookToLibrary (title, author, pages, read) {
+    const book = new Book (title, author, pages, read);
     myLibrary.push(book);
 }
 
-addBookToLibrary('One piece', 'Oda');
-addBookToLibrary('Naruto', 'Kishimoto');
-addBookToLibrary('To Kill A Mockingbird', 'Harper Lee');
+addBookToLibrary('One piece', 'Oda', 2000, 'read');
+addBookToLibrary('Naruto', 'Kishimoto', 1000, 'read');
+addBookToLibrary('To Kill A Mockingbird', 'Harper Lee', 400, 'not read');
 
 
 
 function printLibrary (myLibrary) {
+    libraryContainer.innerHTML = '';
     for(let i = 0; i < myLibrary.length; i++){
         console.log(myLibrary[i]);
         const card = document.createElement('div');
@@ -25,6 +28,8 @@ function printLibrary (myLibrary) {
         card.innerHTML = `
             <h3>${myLibrary[i].title}</h3>
             <p>Author: ${myLibrary[i].author}</p>
+            <p>Pages: ${myLibrary[i].pages}</p>
+            <p>Read: ${myLibrary[i].read}</p>
             `
         libraryContainer.appendChild(card); 
     }
