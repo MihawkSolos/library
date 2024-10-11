@@ -2,11 +2,12 @@
     --myFont: 'Raleway', sans-serif;
     --newBook-background: linear-gradient(to top, #551b55, #19196b);
     --btn-background: rgb(49, 116, 240);
-    --library-background: #dfdcdc;
+    --library-background: #3f4658;
     --form-background: #fff;
     --card-background: rgb(71, 12, 71);
     --primaryFontColor: #fff;
     --cardBtn-background: #353434;
+    --header-background: linear-gradient(to right, #808080, #000000);
 }
 
 /* setting the layout of the website */
@@ -33,7 +34,7 @@ body {
     align-items: center;
     justify-content: space-between;
     padding: 2rem;
-    background: linear-gradient(to right, #808080, #000000);
+    background: var(--header-background);
 
 
     border: 1px black solid;
@@ -112,7 +113,7 @@ body {
     grid-auto-rows: 300px;
     /* repeat as many columns as can fit in the space (.library), with a size of 300px min or 1fr max */
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    background: var(--library-background);
+    background: var(--header-background);
     gap: 6rem;
     
 }
